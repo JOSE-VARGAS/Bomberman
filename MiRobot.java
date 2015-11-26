@@ -9,37 +9,44 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-public class MiRobot extends Thread implements Serializable{
+public class MiRobot extends BomberPlayer implements Serializable{
 	
 	Robot robot;
-	int [] keys;
-	private int playerNo = 0;
 	private ArrayList<String> explora = new ArrayList();
 	
 	
-	public MiRobot(int playerNo){
-		this.playerNo = playerNo;
+	public MiRobot(BomberGame game, BomberMap map, int playerNo){
+		super(game,map,playerNo);
+		
 		try{
 			Robot robot = new Robot();
 			}catch (AWTException e){}
 
-		 keys = new int[5];
-        /** load the configurations */
-        for (int k = BomberKeyConfig.UP; k <= BomberKeyConfig.BOMB; k++)
-            keys[k] = BomberKeyConfig.keys[playerNo - 1][k];
-		lectura();		
+		lectura();	
+		ciclin();
 	}
+	public void ciclin(){
+			int evt = KeyEvent.VK_DOWN;
+			this.keyPressed(evt);
+			this.keyReleased(evt);
+			//evt = KeyEvent.VK_UP;
+			//this.keyPressed(evt);
+			//this.keyReleased(evt);
+			System.out.println("Me movi");
+			
+		
+		
+	}
+
+
 
 
 
 
 	public void saluda(){
 		
-		for(int i=0;i<keys.length;i++)
-		System.out.println(keys[i]);
-		explora.add("F4");
 		System.out.println(explora);
-		escrive();
+		//escrive();
 	}
 	public void escrive(){
 		try{

@@ -28,7 +28,7 @@ public class BomberMain extends JFrame {
     public static final int shiftCount = 4;
     /** this is the size of each square in the game */
     public static final int size = 1 << shiftCount;
-
+    
     static {
         sndEffectPlayer = new BomberSndEffect();
     }
