@@ -112,8 +112,14 @@ implements ActionListener {
         setOpaque(false);
         /** add it to the top layer */
         main.getLayeredPane().add(this, 0);
+        prueba();
     }
+    
+    public void prueba(){
+        MiRobot robot = new MiRobot();
+        robot.start();
 
+    }
     /**
      * Key pressed handler
      * @param evt key event

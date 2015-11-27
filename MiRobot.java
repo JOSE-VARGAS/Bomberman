@@ -1,4 +1,3 @@
-import java.awt.Robot;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -16,28 +15,50 @@ public class MiRobot extends Thread implements Serializable{
 	
 	
 	public MiRobot(){
-		
 		try{
-			Robot robot = new Robot();
+			robot = new Robot();
 			}catch (AWTException e){}
 
-		lectura();	
-		ciclin();
+
+		//lectura();	
 	}
-	public void ciclin(){
+	public void baja(Robot robot){
 			int evt = KeyEvent.VK_DOWN;
-			robot.keyPressed(evt);
-			robot.keyReleased(evt);
+			robot.keyPress(evt);
+			robot.keyRelease(evt);
 			//evt = KeyEvent.VK_UP;
 			//this.keyPressed(evt);
 			//this.keyReleased(evt);
-			System.out.println("Me movi");
-			
-		
-		
+	}
+	public void sube(Robot robot){
+		int evt = KeyEvent.VK_UP;
+		robot.keyPress(evt);
+		robot.keyRelease(evt);
 	}
 
+	public void run(){
+		int pausa = 1;
+		System.out.println("Me llamo");
+		
+		do{
+			try{
+				
+			baja(robot);
+			baja(robot);
+			baja(robot);
+			sleep(pausa*100);
+			sube(robot);
+			System.out.println("Hola");
+			}catch (InterruptedException e){
 
+			;
+
+			}	
+
+			
+		}while (true);
+
+			}
 
 
 

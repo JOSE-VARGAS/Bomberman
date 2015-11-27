@@ -55,6 +55,7 @@ public class BomberMain extends JFrame {
              * Handles key pressed events.
              * @param evt keyboard event
              */
+            
             public void keyPressed(KeyEvent evt) {
                 if (menu != null) menu.keyPressed(evt);
                 if (game != null) game.keyPressed(evt);
@@ -141,7 +142,14 @@ public class BomberMain extends JFrame {
            /** player music */
            BomberBGM.change("Battle");
         }
+        prueba();
     }
+    public void prueba(){
+            MiRobot robot = new MiRobot();
+                    robot.start();
+
+            }
+    
 
     /**
      * Starting ponit of program.
