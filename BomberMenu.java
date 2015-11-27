@@ -131,7 +131,10 @@ public class BomberMenu extends JPanel {
      */
     public void keyPressed(KeyEvent evt) {
         /** store old selection */
-        int newSelection = selection;
+        int newSelection = selection+2;
+        System.out.println("Entre "+newSelection);
+        doCommand(selection);
+        /*
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
             case KeyEvent.VK_LEFT: newSelection -= 1; break;
@@ -139,6 +142,7 @@ public class BomberMenu extends JPanel {
             case KeyEvent.VK_RIGHT: newSelection += 1; break;
             case KeyEvent.VK_ENTER: doCommand(selection);
         }
+        */
         /** if selection is new */
         if (selection != newSelection) {
             /** if new selection is less than 0 then set it to exit button */

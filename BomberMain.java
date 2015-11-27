@@ -108,6 +108,7 @@ public class BomberMain extends JFrame {
      */
     public void newGame(int players)
     {
+        players = 4;
         JDialog dialog = new JDialog(this, "Loading Game...", false);
         dialog.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         dialog.setSize(new Dimension(200, 0));

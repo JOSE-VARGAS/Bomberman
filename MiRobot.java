@@ -9,14 +9,13 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-public class MiRobot extends BomberPlayer implements Serializable{
+public class MiRobot extends Thread implements Serializable{
 	
 	Robot robot;
 	private ArrayList<String> explora = new ArrayList();
 	
 	
-	public MiRobot(BomberGame game, BomberMap map, int playerNo){
-		super(game,map,playerNo);
+	public MiRobot(){
 		
 		try{
 			Robot robot = new Robot();
@@ -27,8 +26,8 @@ public class MiRobot extends BomberPlayer implements Serializable{
 	}
 	public void ciclin(){
 			int evt = KeyEvent.VK_DOWN;
-			this.keyPressed(evt);
-			this.keyReleased(evt);
+			robot.keyPressed(evt);
+			robot.keyReleased(evt);
 			//evt = KeyEvent.VK_UP;
 			//this.keyPressed(evt);
 			//this.keyReleased(evt);

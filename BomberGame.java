@@ -37,7 +37,7 @@ implements ActionListener {
     /** players alive */
     public static int playersLeft = totalPlayers;
     /** player objects */
-    public static MiRobot[] players = null;
+    public static BomberPlayer[] players = null;
 
     static
     {
@@ -100,10 +100,10 @@ implements ActionListener {
         catch (Exception e) { new ErrorDialog(e); }
 
         /** create the players array */
-        players = new MiRobot[totalPlayers];
+        players = new BomberPlayer[totalPlayers];
         /** create the players */
         for (int i = 0; i < totalPlayers; i++)
-            players[i] = new MiRobot(this, map, i + 1);
+            players[i] = new BomberPlayer(this, map, i + 1);
 
         /** double buffer on */
         setDoubleBuffered(true);
