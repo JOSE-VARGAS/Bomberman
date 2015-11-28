@@ -142,10 +142,10 @@ public class BomberMain extends JFrame {
            /** player music */
            BomberBGM.change("Battle");
         }
-        prueba();
+        //prueba();
     }
     public void prueba(){
-            MiRobot robot = new MiRobot();
+            MiRobot robot = new MiRobot(1);
                     robot.start();
 
             }
