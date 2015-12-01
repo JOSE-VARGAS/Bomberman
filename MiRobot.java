@@ -14,17 +14,18 @@ public class MiRobot extends Thread implements Serializable{
 	Robot robot;
 	private ArrayList<String> explora = new ArrayList();
 	int [] keys;
-	final int UP = 0;
-	final int RI = 1;
-	final int DO = 2;
-	final int LE = 3;
-	final int BO = 4;
-	 
-	public MiRobot(int jugador){
+	int jugador;
+	Monitor monitor;
+	BomberPlayer player;
+
+	public MiRobot(int jugador,Monitor monitor,BomberPlayer player){
 		try{
 			robot = new Robot();
 			}catch (AWTException e){}
 		keys = cargaTeclas(jugador);
+		this.jugador = jugador;
+		this.monitor = monitor;
+		this.player = player;
 
 		//lectura();	
 	}
@@ -34,23 +35,48 @@ public class MiRobot extends Thread implements Serializable{
 		robot.keyRelease(dir);
 	}
 	
+	/*
+	Casillas 
+	-1 = espacio libre
+	0 = Hay pared
+	1 = ladrillo
+	3 = Bomba
+	*/
+
 	public void run(){
 		int pausa = 1;
-		
+		int i = 0;
 		Random rnd = new Random();
 		do{
 			try{
-				int i = rnd.nextInt(5);
-				
-			mover(keys[i]);
+			i = rnd.nextInt(4);
+			movEnDir(i);
+			//mover(keys[1]);
+			System.out.println("Aqui esta mi bomberman "+player.getX()+" "+player.getY());
+			
 			sleep(pausa);
-			}catch (InterruptedException e){
-
-		
-			}	
+			}catch (InterruptedException e){}	
 		}while (true);
+	}
+	
+	/*
+	Se mueve en una direccion hasta encontrar pared
+	*/
 
-		}
+	public void movEnDir(int dir){
+		int x,y,res;
+		do{
+			x = player.getX()/16;
+			y = player.getY()/16;
+			res = monitor.hayPaso(x,y,dir);
+			System.out.println("M : "+res+" D : "+dir+" X : "+x+" Y : "+y);
+			if(res==-1)
+				mover(keys[dir]);
+		}while(res==-1); //!=-2
+		
+
+	}
+
 
 
 
@@ -64,7 +90,7 @@ public class MiRobot extends Thread implements Serializable{
         keys[1] = KeyEvent.VK_RIGHT;
         keys[2] = KeyEvent.VK_DOWN;
         keys[3] = KeyEvent.VK_LEFT;
-        keys[4] = KeyEvent.VK_NUMPAD0;
+        keys[4] = KeyEvent.VK_Q; //KeyEvent.VK_NUMPAD0;
         break;
         case 2: 
 
@@ -85,11 +111,11 @@ public class MiRobot extends Thread implements Serializable{
 		break;
 		case 4:
         /** player 4 default key configurations */
-        keys[0] = KeyEvent.VK_NUMPAD8;
-        keys[1] = KeyEvent.VK_NUMPAD6;
-        keys[2] = KeyEvent.VK_NUMPAD5;
-        keys[3] = KeyEvent.VK_NUMPAD4;
-        keys[4] = KeyEvent.VK_NUMPAD9;
+        keys[0] = KeyEvent.VK_F;//KeyEvent.VK_NUMPAD8;
+        keys[1] = KeyEvent.VK_C;//KeyEvent.VK_NUMPAD5;
+        keys[2] = KeyEvent.VK_E;//KeyEvent.VK_NUMPAD4;
+        keys[3] = KeyEvent.VK_F;//KeyEvent.VK_NUMPAD6;
+        keys[4] = KeyEvent.VK_G;//KeyEvent.VK_NUMPAD9;
     	break;
    	 }
    	 return keys;

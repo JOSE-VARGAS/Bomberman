@@ -144,10 +144,10 @@ public class BomberMain extends JFrame {
         }
         //prueba();
     }
+    /*
     public void prueba(){
             MiRobot robot = new MiRobot(1);
                     robot.start();
-
             }
     
 

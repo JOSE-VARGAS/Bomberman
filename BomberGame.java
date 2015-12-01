@@ -112,15 +112,15 @@ implements ActionListener {
         setOpaque(false);
         /** add it to the top layer */
         main.getLayeredPane().add(this, 0);
-        ponRobot(1);
-        ponRobot(2);
-        ponRobot(3);
-        ponRobot(4);
         Monitor m = new Monitor(map);
+        ponRobot(1,m,players[0]);
+        ponRobot(2,m,players[1]);
+        ponRobot(3,m,players[2]);
+        ponRobot(4,m,players[3]);
     }
     
-    public void ponRobot(int player){
-        MiRobot robot = new MiRobot(player);
+    public void ponRobot(int player,Monitor m,BomberPlayer p){
+        MiRobot robot = new MiRobot(player,m,p);
         robot.start();
 
     }

@@ -92,7 +92,7 @@ public abstract class BomberKeyConfig {
         keys[P1][DOWN] = KeyEvent.VK_DOWN;
         keys[P1][LEFT] = KeyEvent.VK_LEFT;
         keys[P1][RIGHT] = KeyEvent.VK_RIGHT;
-        keys[P1][BOMB] = KeyEvent.VK_NUMPAD0;
+        keys[P1][BOMB] = KeyEvent.VK_Q;//KeyEvent.VK_NUMPAD0;
 
         /** player 2 default key configurations */
         keys[P2][UP] = KeyEvent.VK_W;
@@ -109,11 +109,11 @@ public abstract class BomberKeyConfig {
         keys[P3][BOMB] = KeyEvent.VK_BACK_SLASH;
 
         /** player 4 default key configurations */
-        keys[P4][UP] = KeyEvent.VK_NUMPAD8;
-        keys[P4][DOWN] = KeyEvent.VK_NUMPAD5;
-        keys[P4][LEFT] = KeyEvent.VK_NUMPAD4;
-        keys[P4][RIGHT] = KeyEvent.VK_NUMPAD6;
-        keys[P4][BOMB] = KeyEvent.VK_NUMPAD9;
+        keys[P4][UP] = KeyEvent.VK_F;//KeyEvent.VK_NUMPAD8;
+        keys[P4][DOWN] = KeyEvent.VK_C;//KeyEvent.VK_NUMPAD5;
+        keys[P4][LEFT] = KeyEvent.VK_E;//KeyEvent.VK_NUMPAD4;
+        keys[P4][RIGHT] = KeyEvent.VK_F;//KeyEvent.VK_NUMPAD6;
+        keys[P4][BOMB] = KeyEvent.VK_G;//KeyEvent.VK_NUMPAD9;
 
         /** write the file */
         writeFile();

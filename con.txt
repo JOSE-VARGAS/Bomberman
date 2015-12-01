@@ -1,0 +1,4 @@
+-1 = espacio libre
+0 = Hay pared
+1 = ladrillo
+3 Bomba
