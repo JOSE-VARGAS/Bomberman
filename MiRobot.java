@@ -52,13 +52,24 @@ public class MiRobot extends Thread implements Serializable{
 		int pausa = 1;
 		int i = 0;
 		Random rnd = new Random();
+		int estadoAnt = estado;
+		//Cargamos el Adfs de Explora
 		do{
 			try{
-			i = rnd.nextInt(4);
+			if(estadoAnt==estado) //No Cambio Ent ejecutamos secuencia
+			//Verifica Estados
+			//if Si cambia
+			//Cargamos secuencia	
+			//else
+			//Ejecutamos secuencia
+			//
+			i = rnd.nextInt(5);
 			movEnDir(i);
 			//mover(keys[1]);
 			System.out.println("Aqui esta mi bomberman "+player.getX()+" "+player.getY());
 			
+			
+
 			sleep(pausa);
 			}catch (InterruptedException e){}	
 		}while (true);
