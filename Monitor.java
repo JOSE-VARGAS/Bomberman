@@ -11,8 +11,9 @@ import java.util.Random;
 
 public class Monitor extends Thread implements Serializable{
 	
-	BomberMap mapa;
-	int[][] grid;
+	public BomberMap mapa;
+	public int[][] grid;
+	
 	public Monitor(BomberMap mapa){
 		this.mapa = mapa;
 		this.grid = mapa.grid;

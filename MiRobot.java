@@ -19,6 +19,8 @@ public class MiRobot extends Thread implements Serializable{
 	BomberPlayer player;
 	ArrayList<Integer> secuencia;
 	int estado; //0 :explora,1 :Huye, 2: Sembrador, 3:Ataca, 4:Atrapa_Bonus
+	//Evaluacion de explora
+	boolean[][] casillasVisitadas;
 
 	public MiRobot(int jugador,Monitor monitor,BomberPlayer player){
 		try{
@@ -49,19 +51,23 @@ public class MiRobot extends Thread implements Serializable{
 	*/
 
 	public void run(){
+
 		int pausa = 1;
 		int i = 0;
 		Random rnd = new Random();
 		int estadoAnt = estado;
+		cargaVisitadas();
+
 		//Cargamos el Adfs de Explora
 		do{
 			try{
-			if(estadoAnt==estado) //No Cambio Ent ejecutamos secuencia
+			imprimeVisitadas();
+			//if(estadoAnt==estado) //No Cambio Ent ejecutamos secuencia
 			//Verifica Estados
 			//if Si cambia
 			//Cargamos secuencia	
 			//else
-			//Ejecutamos secuencia
+			//Ejecutamos secuencia //solo un paso
 			//
 			i = rnd.nextInt(5);
 			movEnDir(i);
@@ -166,5 +172,30 @@ public class MiRobot extends Thread implements Serializable{
       entrada.close();
       }catch(Exception e){}
 	}
+	public void cargaVisitadas(){
+		int i = monitor.grid.length;
+		int j = monitor.grid[0].length;
+		casillasVisitadas = new boolean[i][j];
+		for(int m=0;m<i;m++)
+			for(int n=0;n<j;n++)
+				casillasVisitadas[m][n] = false;
 
+		casillasVisitadas[getX()][getY()] = true;
+		System.out.print("Que paso "+casillasVisitadas[getX()][getY()] +" X :"+getX()+" Y "+getY());
+	}
+
+	public void imprimeVisitadas(){
+		int i = monitor.grid.length;
+		int j = monitor.grid[0].length;
+		for(int m=0;m<i;m++){
+			for(int n=0;n<j;n++)
+				System.out.print(casillasVisitadas[m][n]+" "+m+" "+n+" | ");
+
+		System.out.println("\n");
+		}
+		System.out.println("\n \n");
+		}
+
+
+	
 }
