@@ -17,18 +17,23 @@ public class MiRobot extends Thread implements Serializable{
 	int jugador;
 	Monitor monitor;
 	BomberPlayer player;
+	ArrayList<Integer> secuencia;
+	int estado; //0 :explora,1 :Huye, 2: Sembrador, 3:Ataca, 4:Atrapa_Bonus
 
 	public MiRobot(int jugador,Monitor monitor,BomberPlayer player){
 		try{
 			robot = new Robot();
-			}catch (AWTException e){}
-		keys = cargaTeclas(jugador);
-		this.jugador = jugador;
-		this.monitor = monitor;
-		this.player = player;
+		}catch (AWTException e){}
+			keys = cargaTeclas(jugador);
+			this.jugador = jugador;
+			this.monitor = monitor;
+			this.player = player;
+			secuencia = new ArrayList();
+			estado = 0; //Explora
 
 		//lectura();	
 	}
+
 	public void mover(int dir){
 
 		robot.keyPress(dir);
@@ -60,25 +65,35 @@ public class MiRobot extends Thread implements Serializable{
 	}
 	
 	/*
-	Se mueve en una direccion hasta encontrar pared
+	Se mueve en una direccion hasta encontrar una pared
 	*/
 
 	public void movEnDir(int dir){
 		int x,y,res;
 		do{
-			x = player.getX()/16;
-			y = player.getY()/16;
+			x = getX();
+			y = getY();
 			res = monitor.hayPaso(x,y,dir);
 			System.out.println("M : "+res+" D : "+dir+" X : "+x+" Y : "+y);
 			if(res==-1)
 				mover(keys[dir]);
 		}while(res==-1); //!=-2
-		
-
 	}
 
 
+	/*
+	Estas Subrutinas estan pensadas en explorar el mapa
+	*/
+	
 
+	//------------------------------------------------------------------------------------
+
+	public int getX(){
+		return player.getX()/16; //Es por los pixeles 16x16
+	}
+	public int getY(){
+		return player.getY()/16;
+	}
 
 
 	public int[] cargaTeclas(int jugador){
@@ -120,8 +135,6 @@ public class MiRobot extends Thread implements Serializable{
    	 }
    	 return keys;
 	}
-
-
 	public void saluda(){
 		
 		System.out.println(explora);

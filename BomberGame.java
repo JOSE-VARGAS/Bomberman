@@ -114,9 +114,9 @@ implements ActionListener {
         main.getLayeredPane().add(this, 0);
         Monitor m = new Monitor(map);
         ponRobot(1,m,players[0]);
-        ponRobot(2,m,players[1]);
-        ponRobot(3,m,players[2]);
-        ponRobot(4,m,players[3]);
+        //ponRobot(2,m,players[1]);
+        //ponRobot(3,m,players[2]);
+        //ponRobot(4,m,players[3]);
     }
     
     public void ponRobot(int player,Monitor m,BomberPlayer p){
